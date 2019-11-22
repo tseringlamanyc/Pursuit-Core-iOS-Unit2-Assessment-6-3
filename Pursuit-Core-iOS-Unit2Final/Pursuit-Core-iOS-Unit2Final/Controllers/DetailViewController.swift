@@ -23,9 +23,11 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var updateButton: UIButton!
     
     var data: Crayon!
+    var numbers = [CGFloat]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentSetting()
         resetButton.tintColor = UIColor.white
         updateButton.tintColor = UIColor.white
         colorSelected.text = "\(data.name)"
@@ -38,19 +40,32 @@ class DetailViewController: UIViewController {
         view.backgroundColor = UIColor(displayP3Red: (CGFloat(data.red / 255)), green: (CGFloat(data.green / 255)), blue: (CGFloat(data.blue / 255)), alpha: 1.0)
     }
     
+    func currentSetting () {
+        numbers.append(CGFloat(data.red / 255))
+        numbers.append(CGFloat(data.green / 255))
+        numbers.append(CGFloat(data.blue / 255))
+        redLabel.text = "Red \(String(format: "%.1f", numbers[0]))"
+    }
+    
+    
+    
     @IBAction func redChanged(_ sender: UISlider) {
+        numbers[0] = CGFloat(sender.value)
     }
     
     
     @IBAction func blueChanged(_ sender: UISlider) {
+        numbers[2] = CGFloat(sender.value)
     }
     
     
     @IBAction func greenChanged(_ sender: UISlider) {
+        numbers[1] = CGFloat(sender.value)
     }
     
     
     @IBAction func alphaChanged(_ sender: UIStepper) {
+        
     }
     
     

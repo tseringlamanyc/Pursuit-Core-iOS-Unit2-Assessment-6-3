@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         guard let detailsVC = segue.source as? DetailViewController else {
             fatalError()
         }
+        
     }
 
 }
