@@ -20,7 +20,7 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var alphaStepper: UIStepper!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var alphaText: UILabel!
-    @IBOutlet weak var updateButton: UIButton!
+
     
     var crayon: Crayon!
     var numbers = [CGFloat]()
@@ -74,7 +74,6 @@ class DetailViewController: UIViewController {
         configureGreen()
         configureAlpha()
         resetButton.tintColor = UIColor.white
-        
         colorSelected.text = "\(crayon.name)"
         colorSelected.textColor = UIColor.white
         redLabel.textColor = UIColor.white
