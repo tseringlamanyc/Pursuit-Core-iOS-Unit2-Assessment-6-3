@@ -22,43 +22,63 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var alphaText: UILabel!
     @IBOutlet weak var updateButton: UIButton!
     
-    var data: Crayon!
+    var data: Crayon! // call this crayon
     var numbers = [CGFloat]()
     
-    var defaultRed: CGFloat = 0.5
-    var defaultBlue: CGFloat = 0.5
-    var defaultGreen: CGFloat = 0.5
+    func getDefault() {
+        numbers.append(CGFloat(data.red / 255))
+        numbers.append(CGFloat(data.blue / 255))
+        numbers.append(CGFloat(data.green / 255))
+    }
     
-    private var currentRed: CGFloat = 0.5 {
+    var defaultRed = CGFloat()
+    var defaultBlue = CGFloat()
+    var defaultGreen = CGFloat()
+    var defaultAlpha = CGFloat()
+        
+    private var currentRed: CGFloat = 0 {
       didSet {
         redLabel.text = "Red \(String(format: "%.1f", currentRed))"
         defaultRed = currentRed
         redSlider.value = Float(currentRed)
+        view.backgroundColor = UIColor(displayP3Red: currentRed, green: defaultGreen, blue: defaultBlue, alpha: 1.0)
       }
     }
     
-    private var currentBlue: CGFloat = 0.5 {
+    private var currentBlue: CGFloat = 0 {
          didSet {
            blueLabel.text = "Blue \(String(format: "%.1f", currentBlue))"
            defaultBlue = currentBlue
            blueSlider.value = Float(currentBlue)
+            view.backgroundColor = UIColor(displayP3Red: defaultRed, green: defaultGreen, blue: currentBlue, alpha: 1.0)
          }
        }
     
-    private var currentGreen: CGFloat = 0.5 {
+    private var currentGreen: CGFloat = 0 {
       didSet {
         greenLabel.text = "Green \(String(format: "%.1f", currentGreen))"
         defaultGreen = currentGreen
         greenSlider.value = Float(currentGreen)
+        view.backgroundColor = UIColor(displayP3Red: defaultRed, green: currentGreen, blue: defaultBlue, alpha: 1.0)
       }
     }
     
+    private var currentAlpha: CGFloat = 0 {
+      didSet {
+        alphaText.text = "Alpha \(String(format: "%.1f", currentAlpha))"
+        defaultAlpha = currentAlpha
+        alphaStepper.value = Double(currentAlpha)
+        view.backgroundColor = UIColor(displayP3Red: defaultRed, green: currentGreen, blue: defaultBlue, alpha: currentAlpha)
+      }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        getDefault()
         configureRed()
         configureBlue()
         configureGreen()
+        configureAlpha()
         resetButton.tintColor = UIColor.white
         updateButton.tintColor = UIColor.white
         colorSelected.text = "\(data.name)"
@@ -68,26 +88,36 @@ class DetailViewController: UIViewController {
         greenLabel.textColor = UIColor.white
         colorSelected.textColor = UIColor.white
         alphaText.textColor = UIColor.white
+        redLabel.text = "Red \(String(format: "%.1f", CGFloat(data.red / 255)))"
+        greenLabel.text = "Green \(String(format: "%.1f", CGFloat(data.green / 255)))"
+        blueLabel.text = "Blue \(String(format: "%.1f", CGFloat(data.blue / 255)))"
         view.backgroundColor = UIColor(displayP3Red: (CGFloat(data.red / 255)), green: (CGFloat(data.green / 255)), blue: (CGFloat(data.blue / 255)), alpha: 1.0)
     }
     
     func configureRed() {
         redSlider.minimumValue = 0.0
         redSlider.maximumValue = 1.0
-        redSlider.value = Float(currentRed)
+        redSlider.value = Float(data.red / 255)
     }
     
     func configureGreen () {
-        greenSlider.maximumValue = 0.0
-        greenSlider.minimumValue = 1.0
-        greenSlider.value = Float(currentBlue)
+        greenSlider.maximumValue = 1.0
+        greenSlider.minimumValue = 0.0
+        greenSlider.value = Float(data.green / 255)
     }
 
     func configureBlue() {
         blueSlider.minimumValue = 0.0
         blueSlider.maximumValue = 1.0
-        blueSlider.value = Float(currentGreen)
+        blueSlider.value = Float(data.blue / 255)
     }
+    
+    func configureAlpha() {
+           alphaStepper.minimumValue = 0.0
+           alphaStepper.maximumValue = 1.0
+           alphaStepper.stepValue = 0.1
+           alphaStepper.value = 1.0
+       }
     
     
     @IBAction func redChanged(_ sender: UISlider) {
@@ -106,11 +136,20 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func alphaChanged(_ sender: UIStepper) {
-        
+        currentAlpha = CGFloat(sender.value)
     }
     
     
     @IBAction func resetPressed(_ sender: UIButton) {
+        view.backgroundColor = UIColor(displayP3Red: (CGFloat(data.red / 255)), green: (CGFloat(data.green / 255)), blue: (CGFloat(data.blue / 255)), alpha: 1.0)
+        redSlider.value = Float(data.red / 255)
+        greenSlider.value = Float(data.green / 255)
+        alphaStepper.value = Double(1.0)
+        blueSlider.value = Float(data.blue / 255)
+        redLabel.text = "Red \(String(format: "%.1f", CGFloat(data.red / 255)))"
+        greenLabel.text = "Green \(String(format: "%.1f", CGFloat(data.green / 255)))"
+        blueLabel.text = "Blue \(String(format: "%.1f", CGFloat(data.blue / 255)))"
+        
     }
     
     
