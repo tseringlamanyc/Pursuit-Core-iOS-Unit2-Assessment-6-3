@@ -28,6 +28,7 @@ class ViewController: UIViewController {
         guard let detailVC = segue.destination as? DetailViewController, let indexpath = tablewView.indexPathForSelectedRow else {
             fatalError()
         }
+        detailVC.data = datas[indexpath.row]
     }
 
 }
