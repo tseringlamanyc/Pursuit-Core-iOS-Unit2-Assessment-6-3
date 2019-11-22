@@ -23,6 +23,12 @@ class ViewController: UIViewController {
     tablewView.dataSource = self
     datas = Crayon.allTheCrayons
   }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard let detailVC = segue.destination as? DetailViewController, let indexpath = tablewView.indexPathForSelectedRow else {
+            fatalError()
+        }
+    }
 
 }
 
