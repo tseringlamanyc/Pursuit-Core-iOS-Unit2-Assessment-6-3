@@ -115,7 +115,7 @@
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="bGt-oQ-q9i">
                                 <rect key="frame" x="18" y="391" width="378" height="31"/>
                                 <connections>
-                                    <action selector="greenChanged:" destination="XHJ-Of-j96" eventType="valueChanged" id="YRu-lw-Q6N"/>
+                                    <action selector="greenChanged:" destination="XHJ-Of-j96" eventType="valueChanged" id="OIi-lE-X6v"/>
                                 </connections>
                             </slider>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Alpha" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bC0-P0-rGk">
@@ -190,7 +190,7 @@
                         <outlet property="blueSlider" destination="4l7-HT-QKd" id="DE1-3W-dGn"/>
                         <outlet property="colorSelected" destination="O74-Lv-SUd" id="GTI-uj-kAa"/>
                         <outlet property="greenLabel" destination="UfC-Sg-dMT" id="DGp-aJ-KFG"/>
-                        <outlet property="greenSlider" destination="bGt-oQ-q9i" id="eqI-E6-0wq"/>
+                        <outlet property="greenSlider" destination="bGt-oQ-q9i" id="JvJ-XV-mwh"/>
                         <outlet property="redLabel" destination="T6x-gJ-jt0" id="ZHN-ld-lt4"/>
                         <outlet property="redSlider" destination="h4A-50-Pa3" id="xz9-At-avZ"/>
                         <outlet property="resetButton" destination="YdC-IJ-uud" id="Yxy-a7-0hN"/>

@@ -25,9 +25,37 @@ class DetailViewController: UIViewController {
     var data: Crayon!
     var numbers = [CGFloat]()
     
+    var defaultRed: CGFloat = 0.5
+    var defaultBlue: CGFloat = 0.5
+    var defaultGreen: CGFloat = 0.5
+    
+    private var currentRed: CGFloat = 0.5 {
+      didSet {
+        redLabel.text = "Red \(String(format: "%.1f", currentRed))"
+        defaultRed = currentRed
+        redSlider.value = Float(currentRed)
+      }
+    }
+    
+    private var currentBlue: CGFloat = 0.5 {
+         didSet {
+           blueLabel.text = "Blue \(String(format: "%.1f", currentBlue))"
+           defaultBlue = currentBlue
+           blueSlider.value = Float(currentBlue)
+         }
+       }
+    
+    private var currentGreen: CGFloat = 0.5 {
+      didSet {
+        greenLabel.text = "Green \(String(format: "%.1f", currentGreen))"
+        defaultGreen = currentGreen
+        greenSlider.value = Float(currentGreen)
+      }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentSetting()
+        
         configureRed()
         configureBlue()
         configureGreen()
@@ -43,45 +71,37 @@ class DetailViewController: UIViewController {
         view.backgroundColor = UIColor(displayP3Red: (CGFloat(data.red / 255)), green: (CGFloat(data.green / 255)), blue: (CGFloat(data.blue / 255)), alpha: 1.0)
     }
     
-    func currentSetting () {
-        numbers.append(CGFloat(data.red / 255))
-        numbers.append(CGFloat(data.green / 255))
-        numbers.append(CGFloat(data.blue / 255))
-        redLabel.text = "Red \(String(format: "%.1f", numbers[0]))"
-        blueLabel.text = "Blue \(String(format: "%.1f", numbers[2]))"
-        greenLabel.text = "Green \(String(format: "%.1f", numbers[1]))"
-    }
-    
     func configureRed() {
-           redSlider.minimumValue = 0.0
-           redSlider.maximumValue = 1.0
-           redSlider.value = Float(numbers[0])
-       }
-    
-    func configureBlue() {
-        blueSlider.minimumValue = 0.0
-        blueSlider.maximumValue = 1.0
-        blueSlider.value = Float(numbers[2])
+        redSlider.minimumValue = 0.0
+        redSlider.maximumValue = 1.0
+        redSlider.value = Float(currentRed)
     }
     
     func configureGreen () {
         greenSlider.maximumValue = 0.0
         greenSlider.minimumValue = 1.0
-        greenSlider.value = Float(numbers[1])
+        greenSlider.value = Float(currentBlue)
+    }
+
+    func configureBlue() {
+        blueSlider.minimumValue = 0.0
+        blueSlider.maximumValue = 1.0
+        blueSlider.value = Float(currentGreen)
     }
     
+    
     @IBAction func redChanged(_ sender: UISlider) {
-        numbers[0] = CGFloat(sender.value)
+        currentRed = CGFloat((sender.value))
     }
     
     
     @IBAction func blueChanged(_ sender: UISlider) {
-        numbers[2] = CGFloat(sender.value)
+        currentBlue = CGFloat(sender.value)
     }
     
     
     @IBAction func greenChanged(_ sender: UISlider) {
-        numbers[1] = CGFloat(sender.value)
+        currentGreen = CGFloat(sender.value)
     }
     
     
