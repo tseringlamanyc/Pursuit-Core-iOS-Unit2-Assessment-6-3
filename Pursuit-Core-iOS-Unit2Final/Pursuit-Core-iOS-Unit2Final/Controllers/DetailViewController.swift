@@ -74,7 +74,7 @@ class DetailViewController: UIViewController {
         configureGreen()
         configureAlpha()
         resetButton.tintColor = UIColor.white
-        updateButton.tintColor = UIColor.white
+        
         colorSelected.text = "\(crayon.name)"
         colorSelected.textColor = UIColor.white
         redLabel.textColor = UIColor.white
