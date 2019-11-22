@@ -31,13 +31,6 @@ class ViewController: UIViewController {
         detailVC.crayon = crayons[indexpath.row]
     }
     
-    @IBAction func updateColor (_ segue: UIStoryboardSegue) {
-        guard let detailsVC = segue.source as? DetailViewController else {
-            fatalError()
-        }
-        
-    }
-
 }
 
 extension ViewController: UITableViewDataSource {

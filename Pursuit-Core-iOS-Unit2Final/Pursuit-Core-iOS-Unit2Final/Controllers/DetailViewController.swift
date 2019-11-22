@@ -88,6 +88,7 @@ class DetailViewController: UIViewController {
         blueLabel.text = "Blue \(String(format: "%.1f", CGFloat(crayon.blue / 255)))"
         view.backgroundColor = UIColor(displayP3Red: (CGFloat(crayon.red / 255)), green: (CGFloat(crayon.green / 255)), blue: (CGFloat(crayon.blue / 255)), alpha: currentAlpha)
         title = crayon.name
+        
     }
     
     func configureRed() {
