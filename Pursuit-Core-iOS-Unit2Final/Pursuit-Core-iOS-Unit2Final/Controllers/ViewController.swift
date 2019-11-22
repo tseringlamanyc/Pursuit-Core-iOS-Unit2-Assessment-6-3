@@ -36,6 +36,8 @@ extension ViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "colorCell", for: indexPath)
         let color = datas[indexPath.row]
         cell.textLabel?.text = color.name
+        cell.textLabel?.textColor = UIColor.white
+        cell.detailTextLabel?.textColor = UIColor.white
         cell.detailTextLabel?.text = color.hex
         cell.backgroundColor = UIColor(displayP3Red: (CGFloat(color.red / 255)), green: (CGFloat(color.green / 255)), blue: (CGFloat(color.blue / 255)), alpha: 1.0)
         return cell
