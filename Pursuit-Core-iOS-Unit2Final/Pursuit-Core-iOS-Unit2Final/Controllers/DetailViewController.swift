@@ -140,9 +140,9 @@ class DetailViewController: UIViewController {
         view.backgroundColor = UIColor(displayP3Red: (CGFloat(crayon.red / 255)), green: (CGFloat(crayon.green / 255)), blue: (CGFloat(crayon.blue / 255)), alpha: 1.0)
         redSlider.value = Float(crayon.red / 255)
         greenSlider.value = Float(crayon.green / 255)
+        blueSlider.value = Float(crayon.blue / 255)
         currentAlpha = 1.0
         alphaStepper.value = 1.0
-        blueSlider.value = Float(crayon.blue / 255)
         alphaText.text = "Alpha 1.0"
         redLabel.text = "Red \(String(format: "%.1f", CGFloat(crayon.red / 255)))"
         greenLabel.text = "Green \(String(format: "%.1f", CGFloat(crayon.green / 255)))"
