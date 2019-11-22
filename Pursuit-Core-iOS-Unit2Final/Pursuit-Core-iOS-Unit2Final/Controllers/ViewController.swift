@@ -9,12 +9,35 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+  @IBOutlet weak var tablewView: UITableView!
+    
+    var datas = [Crayon]() {
+        didSet {
+            tablewView.reloadData()
+        }
+    }
+    
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
+    tablewView.dataSource = self
+    datas = Crayon.allTheCrayons
   }
 
+}
 
+extension ViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return datas.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "colorCell", for: indexPath)
+        let color = datas[indexPath.row]
+        cell.textLabel?.text = color.name
+        cell.detailTextLabel?.text = color.hex
+        return cell
+    }
 }
 
