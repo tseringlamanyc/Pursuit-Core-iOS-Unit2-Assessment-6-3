@@ -35,7 +35,7 @@ class DetailViewController: UIViewController {
         redLabel.text = "Red \(String(format: "%.1f", currentRed))"
         defaultRed = currentRed
         redSlider.value = Float(currentRed)
-        view.backgroundColor = UIColor(displayP3Red: currentRed, green: defaultGreen, blue: defaultBlue, alpha: defaultAlpha)
+        view.backgroundColor = UIColor(displayP3Red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: currentAlpha)
       }
     }
     
@@ -44,7 +44,7 @@ class DetailViewController: UIViewController {
            blueLabel.text = "Blue \(String(format: "%.1f", currentBlue))"
            defaultBlue = currentBlue
            blueSlider.value = Float(currentBlue)
-            view.backgroundColor = UIColor(displayP3Red: defaultRed, green: defaultGreen, blue: currentBlue, alpha: defaultAlpha)
+            view.backgroundColor = UIColor(displayP3Red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: currentAlpha)
          }
        }
     
@@ -53,7 +53,7 @@ class DetailViewController: UIViewController {
         greenLabel.text = "Green \(String(format: "%.1f", currentGreen))"
         defaultGreen = currentGreen
         greenSlider.value = Float(currentGreen)
-        view.backgroundColor = UIColor(displayP3Red: defaultRed, green: currentGreen, blue: defaultBlue, alpha: defaultAlpha)
+        view.backgroundColor = UIColor(displayP3Red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: currentAlpha)
       }
     }
     
@@ -62,7 +62,7 @@ class DetailViewController: UIViewController {
         alphaText.text = "Alpha \(String(format: "%.1f", currentAlpha))"
         defaultAlpha = currentAlpha
         alphaStepper.value = Double(currentAlpha)
-        view.backgroundColor = UIColor(displayP3Red: defaultRed, green: defaultGreen, blue: defaultBlue, alpha: currentAlpha)
+        view.backgroundColor = UIColor(displayP3Red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: currentAlpha)
       }
     }
 
