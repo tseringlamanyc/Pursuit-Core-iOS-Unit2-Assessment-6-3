@@ -28,6 +28,9 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentSetting()
+        configureRed()
+        configureBlue()
+        configureGreen()
         resetButton.tintColor = UIColor.white
         updateButton.tintColor = UIColor.white
         colorSelected.text = "\(data.name)"
@@ -45,9 +48,27 @@ class DetailViewController: UIViewController {
         numbers.append(CGFloat(data.green / 255))
         numbers.append(CGFloat(data.blue / 255))
         redLabel.text = "Red \(String(format: "%.1f", numbers[0]))"
+        blueLabel.text = "Blue \(String(format: "%.1f", numbers[2]))"
+        greenLabel.text = "Green \(String(format: "%.1f", numbers[1]))"
     }
     
+    func configureRed() {
+           redSlider.minimumValue = 0.0
+           redSlider.maximumValue = 1.0
+           redSlider.value = Float(numbers[0])
+       }
     
+    func configureBlue() {
+        blueSlider.minimumValue = 0.0
+        blueSlider.maximumValue = 1.0
+        blueSlider.value = Float(numbers[2])
+    }
+    
+    func configureGreen () {
+        greenSlider.maximumValue = 0.0
+        greenSlider.minimumValue = 1.0
+        greenSlider.value = Float(numbers[1])
+    }
     
     @IBAction func redChanged(_ sender: UISlider) {
         numbers[0] = CGFloat(sender.value)
