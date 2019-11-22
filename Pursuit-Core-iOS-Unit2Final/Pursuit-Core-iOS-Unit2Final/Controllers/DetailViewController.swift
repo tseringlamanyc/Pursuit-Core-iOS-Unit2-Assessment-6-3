@@ -82,10 +82,11 @@ class DetailViewController: UIViewController {
         greenLabel.textColor = UIColor.white
         colorSelected.textColor = UIColor.white
         alphaText.textColor = UIColor.white
+        alphaText.text = "Alpha 1.0"
         redLabel.text = "Red \(String(format: "%.1f", CGFloat(crayon.red / 255)))"
         greenLabel.text = "Green \(String(format: "%.1f", CGFloat(crayon.green / 255)))"
         blueLabel.text = "Blue \(String(format: "%.1f", CGFloat(crayon.blue / 255)))"
-        view.backgroundColor = UIColor(displayP3Red: (CGFloat(crayon.red / 255)), green: (CGFloat(crayon.green / 255)), blue: (CGFloat(crayon.blue / 255)), alpha: 1.0)
+        view.backgroundColor = UIColor(displayP3Red: (CGFloat(crayon.red / 255)), green: (CGFloat(crayon.green / 255)), blue: (CGFloat(crayon.blue / 255)), alpha: currentAlpha)
         title = crayon.name
     }
     
@@ -139,8 +140,10 @@ class DetailViewController: UIViewController {
         view.backgroundColor = UIColor(displayP3Red: (CGFloat(crayon.red / 255)), green: (CGFloat(crayon.green / 255)), blue: (CGFloat(crayon.blue / 255)), alpha: 1.0)
         redSlider.value = Float(crayon.red / 255)
         greenSlider.value = Float(crayon.green / 255)
-        alphaStepper.value = Double(1.0)
+        currentAlpha = 1.0
+        alphaStepper.value = 1.0
         blueSlider.value = Float(crayon.blue / 255)
+        alphaText.text = "Alpha 1.0"
         redLabel.text = "Red \(String(format: "%.1f", CGFloat(crayon.red / 255)))"
         greenLabel.text = "Green \(String(format: "%.1f", CGFloat(crayon.green / 255)))"
         blueLabel.text = "Blue \(String(format: "%.1f", CGFloat(crayon.blue / 255)))"
