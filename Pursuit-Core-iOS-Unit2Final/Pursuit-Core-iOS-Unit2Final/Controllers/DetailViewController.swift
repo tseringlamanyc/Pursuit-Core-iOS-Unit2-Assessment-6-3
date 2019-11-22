@@ -38,6 +38,24 @@ class DetailViewController: UIViewController {
         view.backgroundColor = UIColor(displayP3Red: (CGFloat(data.red / 255)), green: (CGFloat(data.green / 255)), blue: (CGFloat(data.blue / 255)), alpha: 1.0)
     }
     
-
-
+    @IBAction func redChanged(_ sender: UISlider) {
+    }
+    
+    
+    @IBAction func blueChanged(_ sender: UISlider) {
+    }
+    
+    
+    @IBAction func greenChanged(_ sender: UISlider) {
+    }
+    
+    
+    @IBAction func alphaChanged(_ sender: UIStepper) {
+    }
+    
+    
+    @IBAction func resetPressed(_ sender: UIButton) {
+    }
+    
+    
 }
