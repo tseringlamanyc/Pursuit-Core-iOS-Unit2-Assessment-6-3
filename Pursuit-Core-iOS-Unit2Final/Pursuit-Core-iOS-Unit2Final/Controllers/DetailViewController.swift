@@ -20,11 +20,14 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var alphaStepper: UIStepper!
     @IBOutlet weak var resetButton: UIButton!
     @IBOutlet weak var alphaText: UILabel!
+    @IBOutlet weak var updateButton: UIButton!
     
     var data: Crayon!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetButton.tintColor = UIColor.white
+        updateButton.tintColor = UIColor.white
         colorSelected.text = "\(data.name)"
         colorSelected.textColor = UIColor.white
         redLabel.textColor = UIColor.white

@@ -122,9 +122,14 @@
                             </stepper>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YdC-IJ-uud">
                                 <rect key="frame" x="187.66666666666666" y="510" width="39" height="30"/>
-                                <state key="normal" title="Reset">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
+                                <state key="normal" title="Reset"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sev-wq-ZIi">
+                                <rect key="frame" x="20" y="122" width="51" height="30"/>
+                                <state key="normal" title="Update"/>
+                                <connections>
+                                    <segue destination="VYl-nS-cQG" kind="unwind" unwindAction="updateColor:" id="mEE-kW-Bo6"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -137,7 +142,9 @@
                             <constraint firstItem="h4A-50-Pa3" firstAttribute="leading" secondItem="5s5-Ce-9Hb" secondAttribute="leading" constant="20" id="CVw-f5-I9e"/>
                             <constraint firstItem="5s5-Ce-9Hb" firstAttribute="trailing" secondItem="4l7-HT-QKd" secondAttribute="trailing" constant="20" id="Gzu-4A-oCF"/>
                             <constraint firstItem="bGt-oQ-q9i" firstAttribute="leading" secondItem="5s5-Ce-9Hb" secondAttribute="leading" constant="20" id="IKy-Xs-Th1"/>
+                            <constraint firstItem="Sev-wq-ZIi" firstAttribute="top" secondItem="5s5-Ce-9Hb" secondAttribute="top" constant="34" id="Jnw-gp-6Gl"/>
                             <constraint firstItem="bC0-P0-rGk" firstAttribute="top" secondItem="bGt-oQ-q9i" secondAttribute="bottom" constant="20" id="LUm-WC-4GZ"/>
+                            <constraint firstItem="Sev-wq-ZIi" firstAttribute="leading" secondItem="5s5-Ce-9Hb" secondAttribute="leading" constant="20" id="MLQ-jU-EWm"/>
                             <constraint firstItem="YdC-IJ-uud" firstAttribute="top" secondItem="6yQ-Ex-gwe" secondAttribute="bottom" constant="8" id="McC-Hg-08t"/>
                             <constraint firstItem="411-g8-CJT" firstAttribute="top" secondItem="h4A-50-Pa3" secondAttribute="bottom" constant="20" id="PwG-Gt-qJC"/>
                             <constraint firstItem="6yQ-Ex-gwe" firstAttribute="top" secondItem="bC0-P0-rGk" secondAttribute="bottom" constant="8" id="ZMg-sd-uHb"/>
@@ -172,9 +179,11 @@
                         <outlet property="redLabel" destination="T6x-gJ-jt0" id="ZHN-ld-lt4"/>
                         <outlet property="redSlider" destination="h4A-50-Pa3" id="xz9-At-avZ"/>
                         <outlet property="resetButton" destination="YdC-IJ-uud" id="Yxy-a7-0hN"/>
+                        <outlet property="updateButton" destination="Sev-wq-ZIi" id="NTd-8T-1l9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j95-Fh-SMI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="VYl-nS-cQG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1803" y="138"/>
         </scene>

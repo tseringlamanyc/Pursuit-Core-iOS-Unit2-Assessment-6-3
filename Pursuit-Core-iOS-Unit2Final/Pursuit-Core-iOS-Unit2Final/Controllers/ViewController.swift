@@ -30,6 +30,12 @@ class ViewController: UIViewController {
         }
         detailVC.data = datas[indexpath.row]
     }
+    
+    @IBAction func updateColor (_ segue: UIStoryboardSegue) {
+        guard let detailsVC = segue.source as? DetailViewController else {
+            fatalError()
+        }
+    }
 
 }
 
