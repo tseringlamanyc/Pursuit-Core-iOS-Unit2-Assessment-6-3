@@ -25,6 +25,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        colorSelected.text = "\(data.name)"
+        colorSelected.textColor = UIColor.white
         redLabel.textColor = UIColor.white
         blueLabel.textColor = UIColor.white
         greenLabel.textColor = UIColor.white
