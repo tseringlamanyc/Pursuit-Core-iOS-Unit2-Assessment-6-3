@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     
   @IBOutlet weak var tablewView: UITableView!
     
-    var datas = [Crayon]() {
+    var crayons = [Crayon]() {
         didSet {
             tablewView.reloadData()
         }
@@ -21,14 +21,14 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     tablewView.dataSource = self
-    datas = Crayon.allTheCrayons
+    crayons = Crayon.allTheCrayons
   }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let detailVC = segue.destination as? DetailViewController, let indexpath = tablewView.indexPathForSelectedRow else {
             fatalError()
         }
-        detailVC.data = datas[indexpath.row]
+        detailVC.crayon = crayons[indexpath.row]
     }
     
     @IBAction func updateColor (_ segue: UIStoryboardSegue) {
@@ -43,12 +43,12 @@ class ViewController: UIViewController {
 extension ViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return datas.count
+        return crayons.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "colorCell", for: indexPath)
-        let color = datas[indexPath.row]
+        let color = crayons[indexPath.row]
         cell.textLabel?.text = color.name
         cell.textLabel?.textColor = UIColor.white
         cell.detailTextLabel?.textColor = UIColor.white

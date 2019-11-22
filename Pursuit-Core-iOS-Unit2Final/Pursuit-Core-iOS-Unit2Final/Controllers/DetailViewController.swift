@@ -22,14 +22,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var alphaText: UILabel!
     @IBOutlet weak var updateButton: UIButton!
     
-    var data: Crayon! // call this crayon
+    var crayon: Crayon!
     var numbers = [CGFloat]()
-    
-    func getDefault() {
-        numbers.append(CGFloat(data.red / 255))
-        numbers.append(CGFloat(data.blue / 255))
-        numbers.append(CGFloat(data.green / 255))
-    }
     
     var defaultRed = CGFloat()
     var defaultBlue = CGFloat()
@@ -41,7 +35,7 @@ class DetailViewController: UIViewController {
         redLabel.text = "Red \(String(format: "%.1f", currentRed))"
         defaultRed = currentRed
         redSlider.value = Float(currentRed)
-        view.backgroundColor = UIColor(displayP3Red: currentRed, green: defaultGreen, blue: defaultBlue, alpha: 1.0)
+        view.backgroundColor = UIColor(displayP3Red: currentRed, green: defaultGreen, blue: defaultBlue, alpha: defaultAlpha)
       }
     }
     
@@ -50,7 +44,7 @@ class DetailViewController: UIViewController {
            blueLabel.text = "Blue \(String(format: "%.1f", currentBlue))"
            defaultBlue = currentBlue
            blueSlider.value = Float(currentBlue)
-            view.backgroundColor = UIColor(displayP3Red: defaultRed, green: defaultGreen, blue: currentBlue, alpha: 1.0)
+            view.backgroundColor = UIColor(displayP3Red: defaultRed, green: defaultGreen, blue: currentBlue, alpha: defaultAlpha)
          }
        }
     
@@ -59,57 +53,58 @@ class DetailViewController: UIViewController {
         greenLabel.text = "Green \(String(format: "%.1f", currentGreen))"
         defaultGreen = currentGreen
         greenSlider.value = Float(currentGreen)
-        view.backgroundColor = UIColor(displayP3Red: defaultRed, green: currentGreen, blue: defaultBlue, alpha: 1.0)
+        view.backgroundColor = UIColor(displayP3Red: defaultRed, green: currentGreen, blue: defaultBlue, alpha: defaultAlpha)
       }
     }
     
-    private var currentAlpha: CGFloat = 0 {
+    private var currentAlpha: CGFloat = 1 {
       didSet {
         alphaText.text = "Alpha \(String(format: "%.1f", currentAlpha))"
         defaultAlpha = currentAlpha
         alphaStepper.value = Double(currentAlpha)
-        view.backgroundColor = UIColor(displayP3Red: defaultRed, green: currentGreen, blue: defaultBlue, alpha: currentAlpha)
+        view.backgroundColor = UIColor(displayP3Red: defaultRed, green: defaultGreen, blue: defaultBlue, alpha: currentAlpha)
       }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        getDefault()
+
         configureRed()
         configureBlue()
         configureGreen()
         configureAlpha()
         resetButton.tintColor = UIColor.white
         updateButton.tintColor = UIColor.white
-        colorSelected.text = "\(data.name)"
+        colorSelected.text = "\(crayon.name)"
         colorSelected.textColor = UIColor.white
         redLabel.textColor = UIColor.white
         blueLabel.textColor = UIColor.white
         greenLabel.textColor = UIColor.white
         colorSelected.textColor = UIColor.white
         alphaText.textColor = UIColor.white
-        redLabel.text = "Red \(String(format: "%.1f", CGFloat(data.red / 255)))"
-        greenLabel.text = "Green \(String(format: "%.1f", CGFloat(data.green / 255)))"
-        blueLabel.text = "Blue \(String(format: "%.1f", CGFloat(data.blue / 255)))"
-        view.backgroundColor = UIColor(displayP3Red: (CGFloat(data.red / 255)), green: (CGFloat(data.green / 255)), blue: (CGFloat(data.blue / 255)), alpha: 1.0)
+        redLabel.text = "Red \(String(format: "%.1f", CGFloat(crayon.red / 255)))"
+        greenLabel.text = "Green \(String(format: "%.1f", CGFloat(crayon.green / 255)))"
+        blueLabel.text = "Blue \(String(format: "%.1f", CGFloat(crayon.blue / 255)))"
+        view.backgroundColor = UIColor(displayP3Red: (CGFloat(crayon.red / 255)), green: (CGFloat(crayon.green / 255)), blue: (CGFloat(crayon.blue / 255)), alpha: 1.0)
+        title = crayon.name
     }
     
     func configureRed() {
         redSlider.minimumValue = 0.0
         redSlider.maximumValue = 1.0
-        redSlider.value = Float(data.red / 255)
+        redSlider.value = Float(crayon.red / 255)
     }
     
     func configureGreen () {
         greenSlider.maximumValue = 1.0
         greenSlider.minimumValue = 0.0
-        greenSlider.value = Float(data.green / 255)
+        greenSlider.value = Float(crayon.green / 255)
     }
 
     func configureBlue() {
         blueSlider.minimumValue = 0.0
         blueSlider.maximumValue = 1.0
-        blueSlider.value = Float(data.blue / 255)
+        blueSlider.value = Float(crayon.blue / 255)
     }
     
     func configureAlpha() {
@@ -117,7 +112,7 @@ class DetailViewController: UIViewController {
            alphaStepper.maximumValue = 1.0
            alphaStepper.stepValue = 0.1
            alphaStepper.value = 1.0
-       }
+    }
     
     
     @IBAction func redChanged(_ sender: UISlider) {
@@ -141,15 +136,14 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func resetPressed(_ sender: UIButton) {
-        view.backgroundColor = UIColor(displayP3Red: (CGFloat(data.red / 255)), green: (CGFloat(data.green / 255)), blue: (CGFloat(data.blue / 255)), alpha: 1.0)
-        redSlider.value = Float(data.red / 255)
-        greenSlider.value = Float(data.green / 255)
+        view.backgroundColor = UIColor(displayP3Red: (CGFloat(crayon.red / 255)), green: (CGFloat(crayon.green / 255)), blue: (CGFloat(crayon.blue / 255)), alpha: 1.0)
+        redSlider.value = Float(crayon.red / 255)
+        greenSlider.value = Float(crayon.green / 255)
         alphaStepper.value = Double(1.0)
-        blueSlider.value = Float(data.blue / 255)
-        redLabel.text = "Red \(String(format: "%.1f", CGFloat(data.red / 255)))"
-        greenLabel.text = "Green \(String(format: "%.1f", CGFloat(data.green / 255)))"
-        blueLabel.text = "Blue \(String(format: "%.1f", CGFloat(data.blue / 255)))"
-        
+        blueSlider.value = Float(crayon.blue / 255)
+        redLabel.text = "Red \(String(format: "%.1f", CGFloat(crayon.red / 255)))"
+        greenLabel.text = "Green \(String(format: "%.1f", CGFloat(crayon.green / 255)))"
+        blueLabel.text = "Blue \(String(format: "%.1f", CGFloat(crayon.blue / 255)))"
     }
     
     
